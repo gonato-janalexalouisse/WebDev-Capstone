@@ -12,7 +12,7 @@
     <header>
       <div class="pup-logo">
         <img
-          src="logo.png"
+          src="./resources/logo.png"
           alt="PUP"
           class="logo">
         <div class="pup-name">
@@ -84,7 +84,7 @@
       <!-- Features Section -->
       <section id="features">
         <div class="card">
-            <h2>System Features</h2>
+            <h2>Key Features</h2>
             <ul class="feature-list">
               <li>Digital Personal Data Sheet submission</li>
               <li>Online appointment scheduling and approval</li>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="card">
-          <h3>Feature Overview Table</h3>
+          <h2>Feature Overview Table</h2>
           <table>
             <tr>
               <th>Role</th>
@@ -124,43 +124,47 @@
       <!-- Appointment Form Section -->
       <section id="appointment">
         <h2>Book an Appointment</h2>
-        <form action="#" method="post">
-          <fieldset>
-            <legend>Online Appointment Form</legend>
-
-            <label for="name">Full Name:</label><br />
-            <input type="text" id="name" name="name" required /><br /><br />
-
-            <label for="studentNo">Student Number:</label><br />
-            <input
-              type="text"
-              id="studentNo"
-              name="studentNo"
-              required
-            /><br /><br />
-
-            <label for="email">Email Address:</label><br />
-            <input type="email" id="email" name="email" required /><br /><br />
-
-            <label for="concern">Type of Concern:</label><br />
-            <select id="concern" name="concern">
-              <option value="academic">Academic</option>
-              <option value="personal">Personal</option>
-              <option value="career">Career</option>
-              <option value="others">Others</option></select
-            ><br /><br />
-
-            <label for="schedule">Preferred Date:</label><br />
-            <input
-              type="date"
-              id="schedule"
-              name="schedule"
-              required
-            /><br /><br />
-
-            <input type="submit" value="Submit Request" />
-            <input type="reset" value="Clear" />
-          </fieldset>
+        <br>
+        <form action="#" method="post" id="appointment_form">
+          <font size="5" color="#800000">Online Appointment Form</font>
+          <label for="full_name">Full Name:</label>
+          <input
+            type="text"
+            id="full_name"
+            name="full_name"
+            placeholder="e.g. Joshua L. Serohijos"
+            required/>
+          <label for="student_number">Student Number:</label>
+          <input
+            type="text"
+            id="student_number"
+            name="student_number"
+            placeholder="e.g. 20XX-00XXX-TG-X"
+            required/>
+          <label for="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="e.g. joshua.serohijos@example.com"
+            required/>
+          <label for="type_of_concern">Type of Concern:</label>
+          <input
+            type="text"
+            id="type_of_concern"
+            name="type_of_concern"
+            placeholder="e.g. Academic Advising"
+            required/>
+          <label for="appointment_date">Preferred Appointment Date:</label>
+          <input
+            type="date"
+            id="appointment_date"
+            name="appointment_date"
+            required/>
+          <div style="display: flex; gap: 10px; margin-top: 10px; width: 100%;">
+            <input type="submit">
+            <input type="reset" value="Clear">
+          </div>
         </form>
       </section>
 

@@ -1,0 +1,233 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body & Fonts */
+body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: #f7f9fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #800000;
+    color: white;
+    text-align: center;
+    height: 120px;
+    width: 100%;
+    padding: 1rem;
+}
+
+header h1 {
+    font-size: 28px;
+}
+header h2 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+.pup-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pup-name {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+/* Navigation */
+nav {
+    text-align: center;
+    height: 100%;
+}
+nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+nav ul li {
+    margin: 0px 15px;
+    text-decoration: underline;
+}
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+nav a:hover {
+    background-color: #d63333;
+}
+
+/* Sections */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    min-height: 80vh;
+}
+.main-image {
+    width: 70%;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 97%;
+    min-width: 250px;
+    max-width: 800px;
+    border-radius: 8px;
+    padding: 20px 80px;
+    margin: 15px;
+    box-shadow: -0.1px 4px 10px rgba(0,0,0,0.1);
+}
+
+#hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(to bottom, #800000, #ff6969, #fff5f5);
+    color: white;
+    height: 35rem;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.about-text {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+}
+
+#features {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+/* Lists */
+.feature-list {
+    list-style-type: square;
+    text-align: left;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.primary-btn {
+    background-color: #ffb700;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+/* Tables */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #555;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: #800000;
+    color: white;
+}
+
+/* Form */
+form {
+    background-color: white;
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #800000;
+    border-radius: 8px;
+}
+fieldset {
+    border: 2px solid #800000;
+    padding: 20px;
+    border-radius: 8px;
+}
+legend {
+    color: #800000;
+    font-weight: bold;
+}
+input, select {
+    width: 80%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+input[type="submit"], input[type="reset"] {
+    background-color: #800000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #a00000;
+}
+
+/* Iframe */
+iframe {
+    width: 80%;
+    height: 300px;
+    border: 2px solid #800000;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #800000;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
