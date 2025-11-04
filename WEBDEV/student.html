@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PUPT-OGOS — Student Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ensure contrast for buttons */
+    .btn-primary { background: var(--primary) !important; color: #fff !important; }
+    .btn-secondary { background: rgba(0,0,0,0.06) !important; color: var(--primary) !important; border: 1px solid rgba(0,0,0,0.06); }
+
+    /* compact links/buttons in header */
+    .header__nav { display:flex; gap:12px; align-items:center; }
+    .header__small-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      height:36px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.06);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .header__action-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      height:36px;
+      padding:6px 12px;
+      border-radius:8px;
+      background: var(--primary);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      border: none;
+      cursor: pointer;
+    }
+    @media (max-width:600px) {
+      .header__small-btn .label { display:none; }
+      .header__action-btn { padding:6px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html" class="header__logo">
+        <img src="https://cdn.builder.io/api/v1/image/assets%2F77bb8ffeb5044269a785b26ec474fa4e%2Fb60277a6da2341b19630cd41f26ef516?format=webp&width=800" alt="PUPT Logo" class="header__logo-img">
+        <div>
+          <h1 class="header__title">PUPT-OGOS</h1>
+          <p class="header__subtitle">Guidance Office Services</p>
+        </div>
+      </a>
+
+      <!-- About + compact Login beside it -->
+      <nav class="header__nav" style="margin-left:auto;">
+        <a href="index.html#about" class="header__nav-link">About</a>
+        <a href="index.html#login" class="header__small-btn" title="Login">
+          <span class="icon">🔐</span>
+          <span class="label">Login</span>
+        </a>
+      </nav>
+
+      <!-- Top-right action: Logout button for authenticated dashboard -->
+      <button id="headerLogout" class="header__action-btn" title="Logout">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <main id="app">
+    <section class="student-dashboard">
+      <div class="container">
+        <h2 class="section__title" style="text-align:left;">Student Dashboard</h2>
+
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start;">
+          <div>
+            <div class="feature-card" style="text-align:left;">
+              <h3 class="feature-title">Welcome, <span id="studentName">Student</span></h3>
+              <p class="feature-desc">This is your personal dashboard where you can manage appointments, submit guidance documents, and view your counseling history.</p>
+            </div>
+
+            <section style="margin-top:24px;">
+              <h3 style="margin:0 0 12px 0;font-weight:700;color:var(--primary);">Quick Actions</h3>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="#" id="bookBtn" class="btn btn-primary">Book Appointment</a>
+                <a href="#" class="btn btn-secondary">View Records</a>
+                <a href="#" class="btn btn-secondary">Submit PDS</a>
+              </div>
+            </section>
+
+            <section style="margin-top:32px;">
+              <h3 style="margin:0 0 12px 0;font-weight:700;color:var(--primary);">Upcoming Appointments</h3>
+              <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <p style="margin:0 0 8px 0;font-weight:600;" id="upcomingMsg">No upcoming appointments</p>
+                <p style="margin:0;color:#666;">Schedule a session with a counselor when you're ready.</p>
+              </div>
+            </section>
+          </div>
+
+          <aside>
+            <div class="form" style="padding:16px;">
+              <h4 style="margin:0 0 12px 0;color:var(--primary);font-weight:800;">Profile</h4>
+              <p style="margin:0 0 8px 0;font-weight:600;">Name: <span id="profileName">John Student</span></p>
+              <p style="margin:0 0 8px 0;">ID: <span id="profileId">2025-00001</span></p>
+              <p style="margin:0 0 16px 0;">Email: <span id="profileEmail">student@example.edu</span></p>
+              <button id="logoutBtn" class="btn btn-secondary" style="width:100%;">Logout</button>
+            </div>
+
+            <div style="margin-top:16px;">
+              <div class="feature-card" style="padding:16px;">
+                <h4 class="feature-title" style="font-size:1rem;margin-bottom:8px;">Guidance Resources</h4>
+                <ul style="margin:0;padding-left:18px;color:#444;">
+                  <li>How to prepare for counseling</li>
+                  <li>Frequently Asked Questions</li>
+                  <li>Contact your counselor</li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <div class="footer__col">
+        <h3 class="footer__title">About PUPT-OGOS</h3>
+        <p class="footer__desc">Online Guidance Office Services System for Polytechnic University of the Philippines - Taguig</p>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__title">Quick Links</h3>
+        <ul class="footer__links">
+          <li><a href="index.html" class="footer__link">Home</a></li>
+          <li><a href="index.html#login" class="footer__link">Login</a></li>
+          <li><a href="index.html#contact" class="footer__link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__title">Contact</h3>
+        <p class="footer__desc">Polytechnic University of the Philippines - Taguig<br>Email: guidance@pup.edu.ph</p>
+      </div>
+    </div>
+    <div class="footer__copyright">&copy; 2025 PUPT-OGOS. All rights reserved.</div>
+  </footer>
+
+  <script>
+    (function() {
+      // Auth guard
+      try {
+        const raw = localStorage.getItem('pup_ogos_user');
+        if (!raw) {
+          window.location.href = 'index.html#login';
+          return;
+        }
+        const user = JSON.parse(raw);
+        if (!user || user.role !== 'student') {
+          window.location.href = 'index.html#login';
+          return;
+        }
+        // Populate profile
+        document.getElementById('studentName').textContent = user.name || 'Student';
+        document.getElementById('profileName').textContent = user.name || 'Student';
+        document.getElementById('profileEmail').textContent = user.email || '';
+        document.getElementById('profileId').textContent = user.id || '2025-00001';
+      } catch (e) {
+        window.location.href = 'index.html#login';
+      }
+
+      // Page-level logout button (sidebar)
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          localStorage.removeItem('pup_ogos_user');
+          window.location.href = 'index.html#login';
+        });
+      }
+
+      // Header-level Logout (top-right)
+      const headerLogout = document.getElementById('headerLogout');
+      if (headerLogout) {
+        headerLogout.addEventListener('click', function() {
+          localStorage.removeItem('pup_ogos_user');
+          window.location.href = 'index.html#login';
+        });
+      }
+
+      // Demo book appointment handler
+      const bookBtn = document.getElementById('bookBtn');
+      if (bookBtn) {
+        bookBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          alert('Booking flow not implemented in demo.');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

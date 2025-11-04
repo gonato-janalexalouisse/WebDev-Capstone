@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PUPT-OGOS — Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .btn-primary { background: var(--primary) !important; color: #fff !important; }
+    .btn-secondary { background: rgba(0,0,0,0.06) !important; color: var(--primary) !important; border: 1px solid rgba(0,0,0,0.06); }
+
+    .header__nav { display:flex; gap:12px; align-items:center; }
+    .header__small-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      height:36px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.06);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .header__action-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      height:36px;
+      padding:6px 12px;
+      border-radius:8px;
+      background: var(--primary);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      border: none;
+      cursor: pointer;
+    }
+    @media (max-width:600px) {
+      .header__small-btn .label { display:none; }
+      .header__action-btn { padding:6px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html" class="header__logo">
+        <img src="https://cdn.builder.io/api/v1/image/assets%2F77bb8ffeb5044269a785b26ec474fa4e%2Fb60277a6da2341b19630cd41f26ef516?format=webp&width=800" alt="PUPT Logo" class="header__logo-img">
+        <div>
+          <h1 class="header__title">PUPT-OGOS</h1>
+          <p class="header__subtitle">Guidance Office Services</p>
+        </div>
+      </a>
+
+      <!-- About + compact Login beside it -->
+      <nav class="header__nav" style="margin-left:auto;">
+        <a href="index.html#about" class="header__nav-link">About</a>
+        <a href="index.html#login" class="header__small-btn" title="Login">
+          <span class="icon">🔐</span>
+          <span class="label">Login</span>
+        </a>
+      </nav>
+
+      <!-- Top-right action: Logout button -->
+      <button id="headerLogout" class="header__action-btn" title="Logout">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <main id="app">
+    <section class="admin-dashboard">
+      <div class="container">
+        <h2 class="section__title" style="text-align:left;">Admin Dashboard</h2>
+
+        <div style="display:grid;grid-template-columns:1fr 360px;gap:32px;">
+          <div>
+            <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
+              <a class="btn btn-primary" href="#" id="manageStudents">Manage Students</a>
+              <a class="btn btn-primary" href="#" id="manageAppointments">Manage Appointments</a>
+              <a class="btn btn-secondary" href="#" id="generateReports">Generate Reports</a>
+              <a class="btn btn-secondary" href="#" id="userAccounts">User Accounts</a>
+            </div>
+
+            <div style="margin-top:16px;">
+              <h3 style="margin:0 0 12px 0;font-weight:800;color:var(--primary);">Recent Activity</h3>
+              <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <ul style="margin:0;padding-left:18px;color:#444;" id="recentActivity">
+                  <li>2025-11-01 — Student 2025-00012 submitted PDS</li>
+                  <li>2025-11-02 — Appointment created for 2025-00045</li>
+                  <li>2025-11-03 — Counselor updated case notes</li>
+                </ul>
+              </div>
+            </div>
+
+            <div style="margin-top:24px;">
+              <h3 style="margin:0 0 12px 0;font-weight:800;color:var(--primary);">System Overview</h3>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
+                <div class="feature-card" style="padding:12px;">
+                  <div style="font-weight:800;color:var(--primary);font-size:1.2rem;" id="statStudents">1,248</div>
+                  <div style="color:#666;">Registered Students</div>
+                </div>
+                <div class="feature-card" style="padding:12px;">
+                  <div style="font-weight:800;color:var(--primary);font-size:1.2rem;" id="statPending">84</div>
+                  <div style="color:#666;">Pending Appointments</div>
+                </div>
+                <div class="feature-card" style="padding:12px;">
+                  <div style="font-weight:800;color:var(--primary);font-size:1.2rem;" id="statCounselors">12</div>
+                  <div style="color:#666;">Counselors</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside>
+            <div class="form" style="padding:16px;">
+              <h4 style="margin:0 0 12px 0;color:var(--primary);font-weight:800;">Admin Profile</h4>
+              <p style="margin:0 0 8px 0;font-weight:600;">Name: <span id="adminName">Admin User</span></p>
+              <p style="margin:0 0 8px 0;">Email: <span id="adminEmail">admin@example.edu</span></p>
+              <p style="margin:0 0 16px 0;">Role: Super Admin</p>
+              <button id="logoutBtn" class="btn btn-secondary" style="display:block;width:100%;">Logout</button>
+            </div>
+
+            <div style="margin-top:16px;">
+              <div class="feature-card" style="padding:12px;">
+                <h4 class="feature-title" style="font-size:1rem;margin-bottom:8px;">Shortcuts</h4>
+                <ul style="margin:0;padding-left:18px;color:#444;">
+                  <li><a href="#" id="createAnnouncement">Create Announcement</a></li>
+                  <li><a href="#" id="exportData">Export Data</a></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <div class="footer__col">
+        <h3 class="footer__title">About PUPT-OGOS</h3>
+        <p class="footer__desc">Online Guidance Office Services System for Polytechnic University of the Philippines - Taguig</p>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__title">Quick Links</h3>
+        <ul class="footer__links">
+          <li><a href="index.html" class="footer__link">Home</a></li>
+          <li><a href="index.html#login" class="footer__link">Login</a></li>
+          <li><a href="index.html#contact" class="footer__link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__title">Contact</h3>
+        <p class="footer__desc">Polytechnic University of the Philippines - Taguig<br>Email: guidance@pup.edu.ph</p>
+      </div>
+    </div>
+    <div class="footer__copyright">&copy; 2025 PUPT-OGOS. All rights reserved.</div>
+  </footer>
+
+  <script>
+    (function() {
+      // Auth guard and populate admin info
+      try {
+        const raw = localStorage.getItem('pup_ogos_user');
+        if (!raw) {
+          window.location.href = 'index.html#login';
+          return;
+        }
+        const user = JSON.parse(raw);
+        if (!user || user.role !== 'admin') {
+          window.location.href = 'index.html#login';
+          return;
+        }
+        document.getElementById('adminName').textContent = user.name || 'Admin User';
+        document.getElementById('adminEmail').textContent = user.email || 'admin@example.edu';
+      } catch (e) {
+        window.location.href = 'index.html#login';
+      }
+
+      // Sidebar logout
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          localStorage.removeItem('pup_ogos_user');
+          window.location.href = 'index.html#login';
+        });
+      }
+
+      // Header-level Logout (top-right)
+      const headerLogout = document.getElementById('headerLogout');
+      if (headerLogout) {
+        headerLogout.addEventListener('click', function() {
+          localStorage.removeItem('pup_ogos_user');
+          window.location.href = 'index.html#login';
+        });
+      }
+
+      // Demo handlers for admin actions
+      document.getElementById('manageStudents').addEventListener('click', function(e) {
+        e.preventDefault(); alert('Manage Students screen not implemented in demo.');
+      });
+      document.getElementById('manageAppointments').addEventListener('click', function(e) {
+        e.preventDefault(); alert('Manage Appointments screen not implemented in demo.');
+      });
+      document.getElementById('generateReports').addEventListener('click', function(e) {
+        e.preventDefault(); alert('Generate Reports not implemented in demo.');
+      });
+      document.getElementById('userAccounts').addEventListener('click', function(e) {
+        e.preventDefault(); alert('User Accounts not implemented in demo.');
+      });
+      document.getElementById('createAnnouncement').addEventListener('click', function(e) {
+        e.preventDefault(); alert('Create Announcement not implemented in demo.');
+      });
+      document.getElementById('exportData').addEventListener('click', function(e) {
+        e.preventDefault(); alert('Export Data not implemented in demo.');
+      });
+    })();
+  </script>
+</body>
+</html>
