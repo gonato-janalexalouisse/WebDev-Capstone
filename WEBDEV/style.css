@@ -84,7 +84,6 @@ body {
 .footer {
   background: var(--primary);
   color: #fff;
-  margin-top: 48px;
 }
 .footer__container {
   display: grid;
@@ -127,9 +126,11 @@ body {
 }
 /* Main app container styles for SPA */
 #app {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
   min-height: 60vh;
   background: var(--background);
-  padding: 32px 0;
 }
 /* Hero Section */
 .hero {
@@ -334,7 +335,7 @@ body {
 }
 /* CTA Section */
 .cta {
-  background: var(--primary);
+  background: linear-gradient(to top, #a13030 5%, var(--primary) 95%);
   color: #fff;
   text-align: center;
   padding: 48px 0;
