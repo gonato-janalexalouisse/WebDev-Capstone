@@ -3,7 +3,6 @@
 // but when login/register completes it redirects to student.html or admin.html
 
 const routes = {
-  '': renderLanding,
   '#about': renderAbout,
   '#404': renderNotFound,
 };
@@ -46,9 +45,6 @@ function renderLogin() {
     return;
   }
 
-  document.getElementById('app').innerHTML = `
-  `;
-
   const form = document.getElementById('loginForm');
 
   form.onsubmit = function(e) {
@@ -56,30 +52,31 @@ function renderLogin() {
     const role = form.role.value;
     const email = form.email.value.trim() || (role === 'admin' ? 'admin@example.edu' : 'student@example.edu');
     const name = role === 'admin' ? 'Admin User' : 'John Student';
-    // Set a simple session (for demo). In real app, authenticate on server.
+    
     setSession({ name, email, role });
-    // Redirect to separate static dashboard pages
+    
     if (role === 'admin') {
       window.location.href = 'admin.html';
-    } else {
-      window.location.href = 'student.html';
+      return;
     }
+
+    window.location.href = 'student.html';
   };
 }
 
 function renderRegister() {
-  document.getElementById('registerForm').onsubmit = function(e) {
+  const form = document.getElementById('registerForm');
+  if (!form) return; 
+
+  form.onsubmit = function(e) {
     e.preventDefault();
-    const role = e.target.role.value;
-    const name = e.target.fullName.value.trim() || (role === 'admin' ? 'Admin User' : 'John Student');
-    const email = e.target.email.value.trim() || (role === 'admin' ? 'admin@example.edu' : 'student@example.edu');
-    // Simulate account creation and set session
+    const role = form.role.value;
+    const name = form.fullName.value.trim() || (role === 'admin' ? 'Admin User' : 'John Student');
+    const email = form.email.value.trim() || (role === 'admin' ? 'admin@example.edu' : 'student@example.edu');
+
+    // Save fake session
     setSession({ name, email, role });
-    if (role === 'admin') {
-      window.location.href = 'admin.html';
-    } else {
-      window.location.href = 'student.html';
-    }
+    window.location.href = role === 'admin' ? 'admin.html' : 'student.html';
   };
 }
 
@@ -104,13 +101,13 @@ function router() {
         if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' });
       }, 50);
     }
-  } else if (hash === '#login') {
-    renderLogin();
-  } else if (hash === '#register') {
-    renderRegister();
   } else {
     renderNotFound();
   }
 }
+
 window.addEventListener('hashchange', router);
-window.addEventListener('DOMContentLoaded', router);
+window.addEventListener('DOMContentLoaded', () => {
+  renderLogin();
+  renderRegister();
+});

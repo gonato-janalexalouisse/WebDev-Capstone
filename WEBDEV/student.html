@@ -1,8 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PUPT-OGOS — Student Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ensure contrast for buttons */
     .btn-primary { background: var(--primary) !important; color: #fff !important; }
@@ -37,82 +40,110 @@
       border: none;
       cursor: pointer;
     }
+    @media (max-width:600px) {
+      .header__small-btn .label { display:none; }
+      .header__action-btn { padding:6px 10px; }
+    }
+
+    /* Dashboard layout tweaks */
+    .dashboard-grid {
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:32px;
+      align-items:start;
+    }
+    .card {
+      background:#fff;
+      padding:16px;
+      border-radius:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.04);
+    }
+    .section-title {
+      margin:0 0 12px 0;
+      font-weight:800;
+      color:var(--primary);
+    }
+    .quick-actions .btn {
+      min-width:180px;
+    }
+    /* Make the order switch explicit on small screens (stack) */
+    @media (max-width:900px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="header">
     <div class="header__container">
       <a href="index.html" class="header__logo">
-        <img src="../resources/logo.png" alt="PUPT Logo" class="header__logo-img">
+        <img src="https://cdn.builder.io/api/v1/image/assets%2F77bb8ffeb5044269a785b26ec474fa4e%2Fb60277a6da2341b19630cd41f26ef516?format=webp&width=800" alt="PUPT Logo" class="header__logo-img">
         <div>
           <h1 class="header__title">PUPT-OGOS</h1>
           <p class="header__subtitle">Guidance Office Services</p>
         </div>
       </a>
 
-      <!-- About + compact Login beside it -->
-      <nav class="header__nav" style="margin-left:auto;">
-        <a href="index.html#about" class="header__nav-link">About</a>
-        <a href="index.html#login" class="header__small-btn" title="Logout" id="headerLogout">
-          <span class="icon">🔐</span>
-          <span class="label">Logout</span>
-        </a>
-      </nav>
+      <!-- Top-right action: Logout -->
+      <button id="headerLogout" class="header__action-btn" title="Logout">
+        Logout
+      </button>
     </div>
   </header>
 
   <main id="app">
     <section class="student-dashboard">
       <div class="container">
-        <h2 class="section__title" style="text-align:left;">Student Dashboard</h2>
+        <h2 class="section__title" style="font-size:2.4rem;margin-bottom:18px;">Student Dashboard</h2>
 
-        <div style="display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start;">
+        <div class="card" style="margin-bottom:24px;border-top:4px solid var(--primary);">
+          <h3 style="margin:0 0 8px 0;color:var(--primary);">Welcome, <span id="studentName">Student</span></h3>
+          <p style="margin:0;color:#555;">This is your personal dashboard where you can manage appointments, submit guidance documents, and view your counseling history.</p>
+        </div>
+
+        <div class="dashboard-grid">
           <div>
-            <div class="feature-card" style="text-align:left;">
-              <h3 class="feature-title">Welcome, <span id="studentName">Student</span></h3>
-              <p class="feature-desc">This is your personal dashboard where you can manage appointments, submit guidance documents, and view your counseling history.</p>
-            </div>
-
-            <section style="margin-top:24px;">
-              <h3 style="margin:0 0 12px 0;font-weight:700;color:var(--primary);">Quick Actions</h3>
-              <div style="display:flex;gap:12px;flex-wrap:wrap;">
-                <a href="#" id="bookBtn" class="btn btn-primary">Book Appointment</a>
-                <a href="#" class="btn btn-secondary">View Records</a>
-                <a href="#" class="btn btn-secondary">Submit PDS</a>
-              </div>
-            </section>
-
-            <section style="margin-top:32px;">
-              <h3 style="margin:0 0 12px 0;font-weight:700;color:var(--primary);">Upcoming Appointments</h3>
-              <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-                <p style="margin:0 0 8px 0;font-weight:600;" id="upcomingMsg">No upcoming appointments</p>
+            <!-- Upcoming Appointments -->
+            <section style="margin-bottom:24px;">
+              <h3 class="section-title">Upcoming Appointments</h3>
+              <div class="card" id="upcomingCard">
+                <p id="upcomingMsg" style="margin:0 0 8px 0;font-weight:600;">No upcoming appointments</p>
                 <p style="margin:0;color:#666;">Schedule a session with a counselor when you're ready.</p>
               </div>
             </section>
+
+            <!-- Quick Actions -->
+            <section style="margin-bottom:32px;">
+              <h3 class="section-title">Quick Actions</h3>
+              <div class="card quick-actions" style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="#" id="bookBtn" class="btn btn-primary" style="min-width:180px;">Book Appointment</a>
+                <a href="#" class="btn btn-secondary" style="min-width:140px;">View Records</a>
+                <a href="#" class="btn btn-secondary" style="min-width:140px;">Submit PDS</a>
+              </div>
+            </section>
+
+            <!-- Additional content if needed -->
           </div>
 
           <aside>
-            <div class="form" style="padding:16px;">
+            <div class="card" style="margin-bottom:16px;">
               <h4 style="margin:0 0 12px 0;color:var(--primary);font-weight:800;">Profile</h4>
               <p style="margin:0 0 8px 0;font-weight:600;">Name: <span id="profileName">John Student</span></p>
               <p style="margin:0 0 8px 0;">ID: <span id="profileId">2025-00001</span></p>
               <p style="margin:0 0 16px 0;">Email: <span id="profileEmail">student@example.edu</span></p>
-              <button id="logoutBtn" class="btn btn-secondary" style="width:100%;">Logout</button>
             </div>
 
-            <div style="margin-top:16px;">
-              <div class="feature-card" style="padding:16px;">
-                <h4 class="feature-title" style="font-size:1rem;margin-bottom:8px;">Guidance Resources</h4>
-                <ul style="margin:0;padding-left:18px;color:#444;">
-                  <li>How to prepare for counseling</li>
-                  <li>Frequently Asked Questions</li>
-                  <li>Contact your counselor</li>
-                </ul>
-              </div>
+            <div class="card">
+              <h4 class="section-title" style="font-size:1rem;margin-bottom:8px;">Guidance Resources</h4>
+              <ul style="margin:0;padding-left:18px;color:#444;">
+                <li>How to prepare for counseling</li>
+                <li>Frequently Asked Questions</li>
+                <li>Contact your counselor</li>
+              </ul>
             </div>
           </aside>
         </div>
-
       </div>
     </section>
   </main>
@@ -162,7 +193,7 @@
         window.location.href = 'index.html#login';
       }
 
-      // Page-level logout button (sidebar)
+      // Sidebar logout
       const logoutBtn = document.getElementById('logoutBtn');
       if (logoutBtn) {
         logoutBtn.addEventListener('click', function() {
