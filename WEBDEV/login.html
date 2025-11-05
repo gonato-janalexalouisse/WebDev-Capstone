@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PUPT-OGOS</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* compact login button in header */
+    .header__login-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 40px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .header__login-btn .icon { font-size: 18px; line-height: 1; }
+    .header__login-btn .label { font-size: 0.95rem; }
+    .header__container { gap: 12px; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html" class="header__logo">
+        <img src="../resources/logo.png" alt="PUPT Logo" class="header__logo-img">
+        <div>
+          <h1 class="header__title">PUPT-OGOS</h1>
+          <p class="header__subtitle">Guidance Office Services</p>
+        </div>
+      </a>
+
+      <nav class="header__nav" style="margin-left:auto;">
+        <a href="#about" class="header__nav-link">About</a>
+      </nav>
+
+      <!-- compact login button on the right -->
+      <a href="login.html" class="header__login-btn" title="Login" aria-label="Login">
+        <span class="icon">🔐</span>
+        <span class="label">Login</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="app">
+    <div class="container">
+      <h2 class="section__title" style="color:var(--primary);text-align:center;margin-top:32px;">Login</h2>
+      <div class="form-card" style="max-width:420px;margin:32px auto 0 auto;background:#fff;padding:24px 20px;border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,0.08);">
+        <form class="form" id="loginForm" style="gap:16px;background:none;padding:0;box-shadow:none;">
+          <label style="font-weight:600;color:#222;">Email Address</label>
+          <input type="email" name="email" required>
+          <label style="font-weight:600;color:#222;">Password</label>
+          <input type="password" name="password" required>
+          <label style="font-weight:600;color:#222;">Role</label>
+          <select name="role" required style="padding:12px;border-radius:12px;border:1px solid #ddd;">
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+          </select>
+          <button type="submit" class="btn btn-primary" style="background:var(--primary);color:#fff;font-weight:800;font-size:1.05rem;letter-spacing:0.6px;margin-top:8px;border-radius:12px;">Log In</button>
+          <div style="margin-top:14px;text-align:center;font-size:0.97rem;">
+            Don't have an account? <a href="register.html" style="color:#0056d2;text-decoration:underline;font-weight:600;">Sign up here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <div class="footer__col">
+        <h3 class="footer__title">About PUPT-OGOS</h3>
+        <p class="footer__desc">Online Guidance Office Services System for Polytechnic University of the Philippines - Taguig</p>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__title">Quick Links</h3>
+        <ul class="footer__links">
+          <li><a href="index.html" class="footer__link">Home</a></li>
+          <li><a href="login.html" class="footer__link">Login</a></li>
+          <li><a href="#contact" class="footer__link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__title">Contact</h3>
+        <p class="footer__desc">Polytechnic University of the Philippines - Taguig<br>Email: guidance@pup.edu.ph</p>
+      </div>
+    </div>
+    <div class="footer__copyright">&copy; 2025 PUPT-OGOS. All rights reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -41,7 +41,7 @@
       </nav>
 
       <!-- compact login button on the right -->
-      <a href="#login" class="header__login-btn" title="Login" aria-label="Login">
+      <a href="login.html" class="header__login-btn" title="Login" aria-label="Login">
         <span class="icon">🔐</span>
         <span class="label">Login</span>
       </a>
@@ -49,7 +49,87 @@
   </header>
 
   <main id="app">
-    <!-- SPA content will be injected here by script.js -->
+    <section class="hero">
+      <div class="container">
+        <div style="display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:24px;">
+          <img src="https://cdn.builder.io/api/v1/image/assets%2F77bb8ffeb5044269a785b26ec474fa4e%2Fb60277a6da2341b19630cd41f26ef516?format=webp&width=800" alt="PUPT Logo" style="width:48px;height:48px;border-radius:50%;background:#fff;">
+          <div>
+            <h1 class="hero__title" style="color:#FFD700;font-size:2rem;margin:0;">PUPT-OGOS</h1>
+            <p class="header__subtitle" style="color:#222;font-size:1rem;margin:0;">Guidance Office Services</p>
+          </div>
+        </div>
+        <p class="hero__desc">Your one-stop online solution for all guidance office services at Polytechnic University of the Philippines – Taguig</p>
+        <div class="hero__actions">
+          <a href="login.html" class="btn btn-primary">Get Started</a>
+          <a href="#about" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+    </section>
+    <section class="features">
+      <div class="container">
+        <h2 class="section__title">Key Features</h2>
+        <div class="features__grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 class="feature-title">Secure Access</h3>
+            <p class="feature-desc">Role-based access for students, staff, and counselors</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📅</div>
+            <h3 class="feature-title">Easy Scheduling</h3>
+            <p class="feature-desc">Book and manage appointments online</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✅</div>
+            <h3 class="feature-title">Digital Records</h3>
+            <p class="feature-desc">Centralized student guidance records</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3 class="feature-title">Support Team</h3>
+            <p class="feature-desc">Dedicated guidance counselors</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about">
+      <div class="container">
+        <h2 class="section__title">About PUPT-OGOS</h2>
+        <p class="section__desc">The PUPT-OGOS was developed to improve the efficiency and accessibility of the university's guidance services. It replaces manual paper-based processes with a centralized online system for handling student records, counseling logs, and appointment scheduling.</p>
+      </div>
+    </section>
+    <section class="services">
+      <div class="container">
+        <h2 class="section__title">Our Services</h2>
+        <div class="services__grid">
+          <div class="service-card">
+            <h3 class="service-title">For Students</h3>
+            <ul class="service-list">
+              <li>Submit digital Personal Data Sheets</li>
+              <li>Schedule counseling sessions online</li>
+              <li>View appointment confirmations</li>
+              <li>Access guidance resources</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <h3 class="service-title">For Administrators</h3>
+            <ul class="service-list">
+              <li>Manage student records and profiles</li>
+              <li>Monitor appointment schedules</li>
+              <li>Generate reports and analytics</li>
+              <li>Manage user accounts and access</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cta">
+      <div class="container">
+        <h2 class="section__title">Ready to Get Started?</h2>
+        <p class="section__desc">Create an account or log in to access PUPT-OGOS</p>
+        <a href="#login" class="btn btn-primary">Login / Sign Up</a>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
